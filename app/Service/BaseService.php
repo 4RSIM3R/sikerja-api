@@ -55,7 +55,7 @@ class BaseService implements BaseContract
             }
 
             if ($paginate) {
-                $model = $query->latest()->paginate($dataPerPage, ["*"], "page", $page)->withQueryString();
+                $model = $query->latest()->paginate($dataPerPage, ["*"], "page", $page)->withQueryString()["data"];
 
                 return [
                     'data' => $model,
@@ -69,7 +69,7 @@ class BaseService implements BaseContract
         } catch (Exception $exception) {
             return $exception;
         }
-    } 
+    }
 
     public function getByDateBetween(
         array $dateBetween = [],
@@ -125,7 +125,7 @@ class BaseService implements BaseContract
                 ->where($whereConditions);
 
             if (!is_null($relationCondition)) {
-                $query = $query->whereHas($relationCondition, fn ($query) => $query->where($whereHasConditions));
+                $query = $query->whereHas($relationCondition, fn($query) => $query->where($whereHasConditions));
             }
 
             return $eloquentBuilder ? $query->latest()->getEloquentBuilder() : $query->latest()->get();

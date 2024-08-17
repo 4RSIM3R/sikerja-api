@@ -2,63 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract\AssignmentContract;
+use App\Http\Requests\AssignmentRequest;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    protected AssignmentContract $service;
+
+    public function __construct(AssignmentContract $service)
     {
-        //
+        $this->service = $service;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index(Request $request)
+    {
+        $page = $request->get('page', 1);
+        $limit = $request->get('limit', 10);
+        $search = $request->get('search');
+        $where = $search ? ['title' => ['like', '%' . $search . '%']] : [];
+
+        $data = $this->service->all(paginate: true, page: $page, dataPerPage: $limit, whereConditions: $where);
+        return WebResponseUtils::response($data);
+    }
+
     public function create()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(AssignmentRequest $request)
     {
-        //
+        $payload = $request->validated();
+        $data = $this->service->create($payload);
+        return WebResponseUtils::response($data);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $data = $this->service->findById($id);
+        return WebResponseUtils::response($data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(AssignmentRequest $request, $id)
     {
-        //
+        $payload = $request->validated();
+        $data = $this->service->update($payload, $id);
+        return WebResponseUtils::response($data);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $result = $this->service->delete($id);
+        return WebResponseUtils::response($result);
     }
 }

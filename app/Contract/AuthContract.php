@@ -1,3 +1,7 @@
 <?php
 
-interface AuthContract {}
+interface AuthContract
+{
+    public function login(array $credentials);
+    public function logout();
+}
