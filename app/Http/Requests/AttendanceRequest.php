@@ -16,6 +16,10 @@ class AttendanceRequest extends ApiRequest
             'photo' => 'required|mimes:jpeg,png,jpg,svg|max:2048',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'work_hour' => [
+                'required',
+                'regex:/^([01][0-9]|2[0-3]):([0-5][0-9])$/',
+            ],
         ];
     }
 }

@@ -22,19 +22,22 @@ class AttendanceController extends Controller
         $user_id = Auth::guard('api')->user()->id;
         $where = [["user_id", "=", $user_id]];
         $data = $this->service->all(paginate: true, whereConditions: $where);
-        return WebResponseUtils::base($data);
+        return WebResponseUtils::response($data);
     }
 
     public function store(AttendanceRequest $request)
     {
         $payload = $request->validated();
         $photo = $request->file('photo');
+        $payload['user_id'] = Auth::guard('api')->user()->id;
         unset($payload['photo']);
         $data = $this->service->create($payload, ["photo" => $photo]);
-        return WebResponseUtils::base($data);
+        return WebResponseUtils::response($data);
     }
 
-    public function today() {
-
+    public function today()
+    {
+        $result = $this->service->today();
+        return WebResponseUtils::response($result);
     }
 }
