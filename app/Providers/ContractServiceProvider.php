@@ -16,6 +16,7 @@ use App\Service\AssignmentService;
 use App\Service\AttendanceService;
 use App\Service\AuthService;
 use App\Service\BaseService;
+use App\Service\SettingService;
 use App\Service\UserService;
 use Illuminate\Support\ServiceProvider;
 

@@ -59,4 +59,11 @@ class ActivityController extends Controller
         $result = $this->service->delete($id);
         return WebResponseUtils::response($result);
     }
+
+    public function evidence(string $id, EvidenceRequest $request)
+    {
+        // $result = $this->service->evidence($id, $request->validated());
+        // return WebResponseUtils::response($result);
+    }
+
 }
