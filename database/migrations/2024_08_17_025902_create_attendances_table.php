@@ -7,15 +7,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('work_hour');
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 10, 8);
             $table->timestamps();
         });
     }
