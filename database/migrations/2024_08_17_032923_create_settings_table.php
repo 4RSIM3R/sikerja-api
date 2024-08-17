@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('annoucements', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->string('application_name');
+            $table->string('application_version');
+            $table->text('application_description');
+            $table->string('start_working_hour');
+            $table->string('grace_period_minutes');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('annoucements');
+        Schema::dropIfExists('settings');
     }
 };
