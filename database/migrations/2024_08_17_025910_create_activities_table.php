@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('report_period_start');
             $table->date('report_period_end');
-            $table->text('execution_task');
+            $table->text('execution_task')->comment('Pelaksana tugas');
             $table->text('result_plan')->comment('Rencana Hasil Kerja');
             $table->text('action_plan')->comment('Rencana Aksi');
             $table->text('output');

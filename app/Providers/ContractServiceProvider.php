@@ -10,6 +10,7 @@ use App\Contract\AuthContract;
 use App\Contract\BaseContract;
 use App\Contract\SettingContract;
 use App\Contract\UserContract;
+use App\Service\ActivityService;
 use App\Service\AnnouncementService;
 use App\Service\AssignmentService;
 use App\Service\AttendanceService;

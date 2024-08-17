@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class ActivityRequest extends ApiRequest
 {
     public function authorize(): bool
@@ -14,7 +12,14 @@ class ActivityRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            //
+            'report_period_start' => 'required|date_format:Y-m-d',
+            'report_period_end' => 'required|date_format:Y-m-d',
+            'execution_task' => 'required|string',
+            'result_plan' => 'required|string',
+            'action_plan' => 'required|string',
+            'output' => 'required|string',
+            'budget' => 'nullable|numeric',
+            'budget_source' => 'nullable',
         ];
     }
 }
