@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Contract\AttendanceContract;
-use App\Model\Attendance;
+use App\Models\Attendance;
 use Illuminate\Database\Eloquent\Model;
 
 class AttendanceService extends BaseService implements AttendanceContract

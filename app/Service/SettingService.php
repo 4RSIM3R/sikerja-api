@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Contract\SettingContract;
-use App\Model\Setting;
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Model;
 
 class SettingService extends BaseService implements SettingContract

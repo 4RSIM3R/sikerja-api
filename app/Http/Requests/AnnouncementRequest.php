@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class AnnouncementRequest extends FormRequest
+class AnnouncementRequest extends ApiRequest
 {
 
     public function authorize(): bool
@@ -17,7 +15,7 @@ class AnnouncementRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required|max:65535',
-            'thubmnail' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif',
+            'thumbnail' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif',
         ];
     }
 }

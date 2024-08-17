@@ -35,7 +35,11 @@ class AnnouncementController extends Controller
     public function store(AnnouncementRequest $request)
     {
         $payload = $request->validated();
-        $data = $this->service->create($payload);
+        $attachment = $request->file('thumbnail');
+
+        unset($payload['thumbnail']);
+
+        $data = $this->service->create($payload, image: ["thumbnail" => $attachment]);
         return WebResponseUtils::response($data);
     }
 
@@ -50,7 +54,10 @@ class AnnouncementController extends Controller
     public function update(AnnouncementRequest $request, $id)
     {
         $payload = $request->validated();
-        $data = $this->service->update($payload, $id);
+        $attachment = $request->file('thumbnail');
+
+        unset($payload['thumbnail']);
+        $data = $this->service->update($payload, $id, image: ["thumbnail" => $attachment]);
         return WebResponseUtils::response($data);
     }
 

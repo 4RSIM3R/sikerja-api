@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Contract\ActivityContract;
-use App\Model\Activity;
+use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
 
 class ActivityService extends BaseService implements ActivityContract

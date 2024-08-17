@@ -15,17 +15,17 @@ class Annoucement extends Model implements HasMedia
 
     protected $hidden = ['media'];
 
-    protected $appends = ['attachment'];
+    protected $appends = ['thumbnail'];
 
     protected $dates = ['deleted_at'];
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('attachment');
+        $this->addMediaCollection('thumbnail');
     }
 
-    public function getAttachmentAttribute()
+    public function getThumbnailAttribute()
     {
-        return $this->getFirstMediaUrl('attachment');
+        return $this->getFirstMediaUrl('thumbnail');
     }
 }

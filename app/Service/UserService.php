@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Contract\UserContract;
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class UserService extends BaseService implements UserContract
