@@ -24,6 +24,10 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
+    protected $append = [
+        'role',
+    ];
+
     protected function casts(): array
     {
         return [
@@ -44,5 +48,10 @@ class User extends Authenticatable implements JWTSubject
             "email" => $this->email,
             "roles" =>  $this->getRoleNames()->first(),
         ];
+    }
+
+    public function getRoleAttribute(): string
+    {
+        return $this->getRoleNames()->first();
     }
 }
