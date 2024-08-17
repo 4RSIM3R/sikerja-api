@@ -140,8 +140,6 @@ class BaseService implements BaseContract
                 ->with($relations)
                 ->where('id', $id);
 
-            // $query = $this->authCheck($query, $guard, $foreignKey);
-
             if (!$query->first()) {
                 return new Exception(sprintf('Data with id %s not available.', $id));
             }

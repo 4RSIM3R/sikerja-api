@@ -17,6 +17,7 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
+       
         if (!Auth::user()->hasRole($role)) {
             return WebResponseUtils::base(["message" => "You have permission to access this page."], status: 403);
         } else {

@@ -15,17 +15,17 @@ class Evidence extends Model implements HasMedia
 
     protected $hidden = ['media'];
 
-    protected $appends = ['attachment'];
+    protected $appends = ['photo'];
 
     protected $dates = ['deleted_at'];
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('attachment');
+        $this->addMediaCollection('photo');
     }
 
-    public function getAttachmentAttribute()
+    public function getPhotoAttribute()
     {
-        return $this->getMedia('attachment');
+        return $this->getMedia('photo');
     }
 }

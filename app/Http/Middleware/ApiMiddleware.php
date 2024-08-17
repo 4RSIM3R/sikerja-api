@@ -15,6 +15,7 @@ class ApiMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
+        
         try {
             if (!Auth::guard('api')->user()) {
                 return WebResponseUtils::base(["message" => "Unauthorized Request"], "Unauthorized Request", 401);

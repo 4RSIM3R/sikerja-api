@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract\ActivityContract;
 use App\Http\Requests\ActivityRequest;
+use App\Http\Requests\EvidenceRequest;
 use App\Utils\WebResponseUtils;
 use Illuminate\Http\Request;
 
@@ -62,8 +63,9 @@ class ActivityController extends Controller
 
     public function evidence(string $id, EvidenceRequest $request)
     {
-        // $result = $this->service->evidence($id, $request->validated());
-        // return WebResponseUtils::response($result);
+        $show = $request->get('show_in_report', false);
+        $photo = $request->file('photo');
+        $result = $this->service->evidence($id, $show, ["photo" => $photo]);
+        return WebResponseUtils::response($result);
     }
-
 }
