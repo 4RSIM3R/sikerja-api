@@ -24,5 +24,9 @@ class AuthController extends Controller
         return WebResponseUtils::response($result);
     }
 
-    public function logout() {}
+    public function logout()
+    {
+        $result = $this->service->logout();
+        return WebResponseUtils::response($result);
+    }
 }
