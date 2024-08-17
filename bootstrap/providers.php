@@ -8,4 +8,5 @@ return [
     App\Providers\ContractServiceProvider::class,
     PermissionServiceProvider::class,
     MediaLibraryServiceProvider::class,
+    Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 ];
