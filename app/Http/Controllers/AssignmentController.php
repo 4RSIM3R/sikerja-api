@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract\AssignmentContract;
 use App\Http\Requests\AssignmentRequest;
+use App\Utils\WebResponseUtils;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -24,18 +25,17 @@ class AssignmentController extends Controller
         $where = $search ? ['title' => ['like', '%' . $search . '%']] : [];
 
         $data = $this->service->all(paginate: true, page: $page, dataPerPage: $limit, whereConditions: $where);
-        return WebResponseUtils::response($data);
+        return WebResponseUtils::response($data, paginate: true);
     }
 
-    public function create()
-    {
-        
-    }
+    public function create() {}
 
     public function store(AssignmentRequest $request)
     {
         $payload = $request->validated();
-        $data = $this->service->create($payload);
+        $attachment = $request->file('attachment');
+        unset($payload['attachment']);
+        $data = $this->service->create($payload, image: ["attachment" => $attachment]);
         return WebResponseUtils::response($data);
     }
 
@@ -45,15 +45,14 @@ class AssignmentController extends Controller
         return WebResponseUtils::response($data);
     }
 
-    public function edit(string $id)
-    {
-        
-    }
+    public function edit(string $id) {}
 
     public function update(AssignmentRequest $request, $id)
     {
         $payload = $request->validated();
-        $data = $this->service->update($payload, $id);
+        $attachment = $request->file('attachment');
+        unset($payload['attachment']);
+        $data = $this->service->update($payload, $id, image: ["attachment" => $attachment]);
         return WebResponseUtils::response($data);
     }
 

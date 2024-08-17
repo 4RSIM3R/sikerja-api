@@ -11,6 +11,7 @@ use App\Contract\BaseContract;
 use App\Contract\SettingContract;
 use App\Contract\UserContract;
 use App\Service\AnnouncementService;
+use App\Service\AssignmentService;
 use App\Service\AttendanceService;
 use App\Service\AuthService;
 use App\Service\BaseService;

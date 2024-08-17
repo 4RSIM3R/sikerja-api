@@ -55,10 +55,9 @@ class BaseService implements BaseContract
             }
 
             if ($paginate) {
-                $model = $query->latest()->paginate($dataPerPage, ["*"], "page", $page)->withQueryString()["data"];
-
+                $model = $query->latest()->paginate($dataPerPage, ["*"], "page", $page)->withQueryString();
                 return [
-                    'data' => $model,
+                    'items' => $model->items(),
                     'prev_page' => (int)mb_substr($model->previousPageUrl(), -1) ?: null,
                     'current_page' => $model->currentPage(),
                     'next_page' => (int)mb_substr($model->nextPageUrl(), -1) ?: null

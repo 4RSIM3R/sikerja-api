@@ -16,7 +16,7 @@ class WebResponseUtils
         ], $status);
     }
 
-    public static function response($result, $messageSuccess = ''): JsonResponse
+    public static function response($result, $messageSuccess = '', $paginate = false): JsonResponse
     {
         if ($result instanceof Exception) {
             return WebResponseUtils::base(["message" => $result->getMessage()], $result->getMessage(), 400);

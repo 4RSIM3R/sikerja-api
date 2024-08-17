@@ -8,6 +8,6 @@ Route::group(['prefix' => 'activity', 'as' => 'activity.', 'middleware' => ['aut
     Route::get('{id}', [ActivityController::class, 'show'])->name('show');
 
     Route::group(['middleware' => ['permission:admin']], function () {
-        Route::resource('activity', ActivityController::class)->only(['store', 'update', 'destroy']);
+        Route::resource('', ActivityController::class)->only(['store', 'update', 'destroy']);
     });
 });

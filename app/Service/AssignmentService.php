@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Contract\AssignmentContract;
-use App\Model\Assignment;
+use App\Models\Assignment;
 use Illuminate\Database\Eloquent\Model;
 
 class AssignmentService extends BaseService implements AssignmentContract
