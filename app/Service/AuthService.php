@@ -3,8 +3,10 @@
 namespace App\Service;
 
 use App\Contract\AuthContract;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthService implements AuthContract
 {
@@ -23,7 +25,6 @@ class AuthService implements AuthContract
             return [
                 "token" => $token,
                 "expired_in" => Auth::guard('api')->factory()->getTTL() * 60,
-                "role" => $user->getRoleNames()->first()
             ];
         } catch (Exception $exception) {
             return $exception;
