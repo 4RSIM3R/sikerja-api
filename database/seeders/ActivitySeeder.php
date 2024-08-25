@@ -22,7 +22,7 @@ class ActivitySeeder extends Seeder
     {
         $activities = [
             [
-                'report_perdiod_start' => '2023-01-01',
+                'report_period_start' => '2023-01-01',
                 'report_period_end' => '2023-01-31',
                 'execution_task' => 'Pelaksana tugas',
                 'result_plan' => 'Rencana Hasil Kerja',
@@ -32,7 +32,7 @@ class ActivitySeeder extends Seeder
                 'budget_source' => 'Sumber Budget',
             ],
             [
-                'report_perdiod_start' => '2023-02-01',
+                'report_period_start' => '2023-02-01',
                 'report_period_end' => '2023-02-28',
                 'execution_task' => 'Pelaksana tugas',
                 'result_plan' => 'Rencana Hasil Kerja',
@@ -42,7 +42,7 @@ class ActivitySeeder extends Seeder
                 'budget_source' => 'Sumber Budget',
             ],
             [
-                'report_perdiod_start' => '2023-03-01',
+                'report_period_start' => '2023-03-01',
                 'report_period_end' => '2023-03-31',
                 'execution_task' => 'Pelaksana tugas',
                 'result_plan' => 'Rencana Hasil Kerja',
