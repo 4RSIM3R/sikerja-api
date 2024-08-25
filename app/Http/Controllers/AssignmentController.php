@@ -33,7 +33,6 @@ class AssignmentController extends Controller
     public function store(AssignmentRequest $request)
     {
         $payload = $request->validated();
-        dd($payload);
         $attachment = $request->file('attachment');
         unset($payload['attachment']);
         $data = $this->service->create($payload, image: ["attachment" => $attachment]);
