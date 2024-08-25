@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'assignment', 'as' => 'assignment.', 'middleware' => ['auth.api']], function () {
     Route::group(['middleware' => ['custom.permission:admin']], function () {
-        Route::delete('{id}', [AssignmentController::class, 'destroy'])->name('destroy');
+        // Route::delete('{id}', [AssignmentController::class, 'destroy'])->name('destroy');
         Route::resource('', AssignmentController::class)->only(['store', 'update']);
     });
 

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'announcement', 'as' => 'announcement.', 'middleware' => ['auth']], function () {
     Route::group(['middleware' => ['custom.permission:admin']], function () {
-        Route::delete('{id}', [AnnouncementController::class, 'destroy'])->name('destroy');
+        // Route::delete('{id}', [AnnouncementController::class, 'destroy'])->name('destroy');
         Route::resource('', AnnouncementController::class)->only(['store', 'update']);
     });
 

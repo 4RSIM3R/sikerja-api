@@ -68,7 +68,7 @@ class ActivityController extends Controller
         return WebResponseUtils::response($result);
     }
 
-    public function report($id)
+    public function export($id)
     {
         $template = base_path('report.docx');
         $output_name = 'output_' . time() . '.docx';
@@ -102,7 +102,6 @@ class ActivityController extends Controller
 
 
         foreach ($attendances as $attendance) {
-            // dd($attendance->getMedia('image')[0]->getPath());
             foreach ($attendance->getMedia('image') as $media) {
                 $thumbnails[] = $media->getPath();
             }
