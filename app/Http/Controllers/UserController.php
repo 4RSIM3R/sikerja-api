@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $data = $this->service->findById($id);
+        $data = $this->service->findById($id, relations: ['attendances']);
         return WebResponseUtils::response($data);
     }
 

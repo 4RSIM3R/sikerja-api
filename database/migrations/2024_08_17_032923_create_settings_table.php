@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('application_description');
             $table->string('start_working_hour');
             $table->string('grace_period_minutes');
+            $table->string('chief_name');
+            $table->string('chief_nip');
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 10, 8);
             $table->timestamps();

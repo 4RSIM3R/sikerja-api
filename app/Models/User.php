@@ -54,4 +54,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getRoleNames()->first();
     }
+
+    public function attendances() {
+        return $this->hasMany(Attendance::class);
+    }
+
 }
