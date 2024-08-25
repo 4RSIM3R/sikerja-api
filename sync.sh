@@ -10,7 +10,7 @@ error_exit() {
 run_migration() {
   if [[ $1 == "fresh" ]]; then
     echo "Running migrate:fresh..."
-    php artisan migrate:fresh || error_exit "Migrate fresh failed."
+    php artisan migrate:fresh --seed || error_exit "Migrate fresh failed."
   else
     echo "Running migrate..."
     php artisan migrate || error_exit "Migrate failed."
