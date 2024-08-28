@@ -9,9 +9,11 @@ Route::group(['prefix' => 'activity', 'as' => 'activity.', 'middleware' => ['aut
         Route::post('evidence/{id}', [ActivityController::class, 'evidence'])->name('evidence');
     });
 
+    Route::get('', [ActivityController::class, 'index'])->name('index');
+
     Route::group(['middleware' => ['custom.permission:admin']], function () {
         Route::get('export/{id}', [ActivityController::class, 'export'])->name('export');
         Route::delete('{id}', [ActivityController::class, 'destroy'])->name('destroy');
-        Route::resource('', ActivityController::class)->only(['store', 'update', 'index', 'show']);
+        Route::resource('', ActivityController::class)->only(['store', 'update', 'show']);
     });
 });
