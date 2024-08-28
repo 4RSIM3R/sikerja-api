@@ -18,6 +18,7 @@ class LoginRequest extends ApiRequest
         return [
             'email' => 'required|email',
             'password' => 'required|string',
+            'fcm_id' => 'required|string',
         ];
     }
 }
