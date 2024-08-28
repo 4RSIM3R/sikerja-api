@@ -16,14 +16,21 @@ class AuthService implements AuthContract
 
             $query = User::where('email', $credentials['email']);
             $user = $query->first();
+            
 
             if (!$user || !Hash::check($credentials['password'], $user->password)) {
                 throw new Exception("Invalid Credentials");
             }
 
+            $query->update(['fcm_id' => $credentials['fcm_id']]);
+
+            unset($credentials['fcm_id']);
+
             $token = Auth::guard('api')->attempt($credentials);
 
-            $query->update(['fcm_id' => $credentials['fcm_id']]);
+            if (!$token) {
+                throw new Exception("Invalid Credentials");
+            }
 
             return [
                 "token" => $token,
