@@ -13,7 +13,7 @@ class AttendanceRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'photo' => 'required|mimes:jpeg,png,jpg,svg|max:2048',
+            'photo' => 'required|mimes:jpeg,png,jpg,svg|max:5000',
             'latitude' => 'required',
             'longitude' => 'required',
             'work_hour' => [
