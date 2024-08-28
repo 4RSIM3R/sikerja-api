@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Contract\ActivityContract;
 use App\Models\Activity;
+use App\Models\ActivityHasUser;
 use App\Models\Evidence;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,31 @@ class ActivityService extends BaseService implements ActivityContract
     {
         $this->model = $model;
         $this->evidence = $evidence;
+    }
+
+    public function create(array $params, $image = null, ?string $guard = null, ?string $foreignKey = null)
+    {
+        $users = $params['user'];
+        unset($params['user']);
+
+        try {
+            DB::beginTransaction();
+
+            $model = $this->model->create($params);
+
+            foreach ($users as $user) {
+                ActivityHasUser::create([
+                    'activity_id' => $model->id,
+                    'user_id' => $user,
+                ]);
+            }
+
+            DB::commit();
+            return $model->fresh();
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return $exception;
+        }
     }
 
     public function evidence(string $id, bool $show, array $photo)

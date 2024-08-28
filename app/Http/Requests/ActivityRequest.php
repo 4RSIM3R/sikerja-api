@@ -20,6 +20,8 @@ class ActivityRequest extends ApiRequest
             'output' => 'required|string',
             'budget' => 'nullable|numeric',
             'budget_source' => 'nullable',
+            'user' => 'required|array',
+            'user.*' => 'required|exists:users,id',
         ];
     }
 }
