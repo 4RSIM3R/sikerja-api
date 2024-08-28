@@ -23,10 +23,6 @@ class AuthService implements AuthContract
 
             $token = Auth::guard('api')->attempt($credentials);
 
-            if (!$token) {
-                throw new Exception("Invalid Credentials");
-            }
-
             $query->update(['fcm_id' => $credentials['fcm_id']]);
 
             return [
